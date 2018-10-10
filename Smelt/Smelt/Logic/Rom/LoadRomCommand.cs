@@ -16,28 +16,18 @@
 
         protected override void Handle()
         {
-            CheckFileSize(filename);
+            CheckFileSize();
 
             var rom = new Rom();
             var rawData = File.ReadAllBytes(filename);
 
             rom.RawData = RemoveSmcHeader(rawData);
 
-            var formatByte = rom.GetByteAt(0x7FD9);
-            rom.Format = formatByte > 1 ? RomFormat.PAL : RomFormat.NTSC;
-
-            if (rom.Format == RomFormat.PAL)
-            {
-                throw new Exception("This is a PAL Rom. PAL Roms are not supported.");
-            }
-
-            rom.PlmBank = rom.GetByteAt(0x204AC);
-            rom.ScrollPlmBank = rom.GetByteAt(0x20B60);
-
             AppState.Rom = rom;
+            Run(new GetRomInfoCommand(AppState));
         }
 
-        private void CheckFileSize(string filename)
+        private void CheckFileSize()
         {
             var fileInfo = new FileInfo(filename);
             
@@ -46,8 +36,8 @@
                 throw new Exception("Rom file is too small.");
             }
 
-            // max length 0xFFFFFF, file might include SMC header (length 0x200)
-            if (fileInfo.Length > 0x10001FF)
+            // max length 0x1000000, file might include SMC header (length 0x200)
+            if (fileInfo.Length > 0x1000200)
             {
                 throw new Exception("Rom file is too large.");
             }
