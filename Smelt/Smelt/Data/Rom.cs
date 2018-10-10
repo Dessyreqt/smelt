@@ -14,16 +14,15 @@
 
     public class Rom
     {
-        public int HeaderSize { get; set; }
         public RomFormat Format { get; set; }
         public byte PlmBank { get; set; }
         public byte ScrollPlmBank { get; set; }
         
-        public byte[] RawData { get; set; }
+        public byte[] RawData { private get; set; }
 
         public byte GetByteAt(int location)
         {
-            return RawData[location + HeaderSize];
+            return RawData[location];
         }
     }
 }
