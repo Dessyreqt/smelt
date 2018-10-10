@@ -16,7 +16,7 @@
 
         protected override void Handle()
         {
-            AppState.Rom = null;
+            CheckFileSize(filename);
 
             var rom = new Rom();
             var rawData = File.ReadAllBytes(filename);
@@ -37,13 +37,29 @@
             AppState.Rom = rom;
         }
 
+        private void CheckFileSize(string filename)
+        {
+            var fileInfo = new FileInfo(filename);
+            
+            if (fileInfo.Length < 0x8000)
+            {
+                throw new Exception("Rom file is too small.");
+            }
+
+            // max length 0xFFFFFF, file might include SMC header (length 0x200)
+            if (fileInfo.Length > 0x10001FF)
+            {
+                throw new Exception("Rom file is too large.");
+            }
+        }
+
         private byte[] RemoveSmcHeader(byte[] rawData)
         {
             var headerSize = rawData.Length % 1024;
 
             if (headerSize != 0 && headerSize != 512)
             {
-                throw new Exception("Rom has a malformed header.");
+                throw new Exception("Rom has a malformed SMC header.");
             }
 
             if (headerSize == 512)

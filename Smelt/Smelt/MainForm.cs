@@ -29,7 +29,7 @@
             OpenFileDialog dialog = new OpenFileDialog
             {
                 Title = "Open Super Metroid ROM File",
-                Filter = "All files|*.*"
+                Filter = "SNES ROM files|*.sfc;*.smc;*.swc;*.fig|All files|*.*"
             };
 
             if (dialog.ShowDialog() == DialogResult.OK)
