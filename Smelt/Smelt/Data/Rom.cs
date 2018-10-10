@@ -1,12 +1,9 @@
 ﻿namespace Smelt.Data
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
+    using System.Globalization;
     using System.Text;
-    using System.Threading.Tasks;
 
-    public enum RomFormat
+    public enum RomRegion
     {
         NTSC,
         PAL
@@ -14,16 +11,41 @@
 
     public class Rom
     {
-        public int HeaderSize { get; set; }
-        public RomFormat Format { get; set; }
+        public RomRegion Region => Header.CreatorLicenseIdCode < 2 ? RomRegion.NTSC : RomRegion.PAL;
+        public RomHeader Header { get; }
+        public int BankSize => Header.Makeup.Mapping == Mapping.HiRom ? 0x10000 : 0x8000;
         public byte PlmBank { get; set; }
         public byte ScrollPlmBank { get; set; }
         
         public byte[] RawData { get; set; }
 
-        public byte GetByteAt(int location)
+        public bool Editable { get; set; }
+
+        public Rom()
         {
-            return RawData[location + HeaderSize];
+            Header = new RomHeader();
+        }
+
+        public byte Byte(int location)
+        {
+            return RawData[location];
+        }
+
+        public int Word(int location)
+        {
+            return RawData[location] + RawData[location + 1] * 0x100;
+        }
+
+        public string String(int location, int size)
+        {
+            var retVal = new StringBuilder();
+
+            for (var i = location; i < location + size; i++)
+            {
+                retVal.Append((char)RawData[i]);
+            }
+
+            return retVal.ToString();
         }
     }
 }
