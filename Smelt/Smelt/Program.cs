@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace Smelt
+﻿namespace Smelt
 {
+    using System;
+    using System.Windows.Forms;
+    using Forms;
+
     static class Program
     {
         /// <summary>

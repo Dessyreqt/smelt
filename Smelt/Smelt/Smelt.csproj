@@ -47,23 +47,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\AddressConverter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddressConverter.Designer.cs">
+      <DependentUpon>AddressConverter.cs</DependentUpon>
+    </Compile>
     <Compile Include="Data\AppState.cs" />
     <Compile Include="Data\Rom.cs" />
     <Compile Include="Data\RomHeader.cs" />
     <Compile Include="Data\RomMakeup.cs" />
+    <Compile Include="Forms\UiCommand.cs" />
+    <Compile Include="Logic\AddressConverter\ConvertAddressCommand.cs" />
     <Compile Include="Logic\Command.cs" />
     <Compile Include="Logic\Rom\GetRomInfoCommand.cs" />
     <Compile Include="Logic\Rom\LoadRomCommand.cs" />
     <Compile Include="Logic\Rom\SaveRomCommand.cs" />
-    <Compile Include="MainForm.cs">
+    <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="MainForm.resx">
+    <EmbeddedResource Include="Forms\AddressConverter.resx">
+      <DependentUpon>AddressConverter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

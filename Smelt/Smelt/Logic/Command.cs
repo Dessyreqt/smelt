@@ -1,7 +1,5 @@
 ﻿namespace Smelt.Logic
 {
-    using System;
-    using System.Windows.Forms;
     using Data;
 
     public abstract class Command
@@ -15,14 +13,7 @@
 
         public static void Run(Command command)
         {
-            try
-            {
-                command.Handle();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
-            }
+            command.Handle();
         }
 
         protected abstract void Handle();

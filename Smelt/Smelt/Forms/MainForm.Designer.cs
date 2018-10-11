@@ -1,4 +1,4 @@
-﻿namespace Smelt
+﻿namespace Smelt.Forms
 {
     partial class MainForm
     {
@@ -31,15 +31,18 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadROMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.romInfoLabel = new System.Windows.Forms.Label();
             this.saveROMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addressConverterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.romInfoLabel = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
+            this.fileToolStripMenuItem,
+            this.toolsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
@@ -62,6 +65,28 @@
             this.loadROMToolStripMenuItem.Text = "Load ROM";
             this.loadROMToolStripMenuItem.Click += new System.EventHandler(this.loadROMToolStripMenuItem_Click);
             // 
+            // saveROMToolStripMenuItem
+            // 
+            this.saveROMToolStripMenuItem.Name = "saveROMToolStripMenuItem";
+            this.saveROMToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.saveROMToolStripMenuItem.Text = "Save ROM";
+            this.saveROMToolStripMenuItem.Click += new System.EventHandler(this.saveROMToolStripMenuItem_Click);
+            // 
+            // toolsToolStripMenuItem
+            // 
+            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addressConverterToolStripMenuItem});
+            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
+            this.toolsToolStripMenuItem.Text = "Tools";
+            // 
+            // addressConverterToolStripMenuItem
+            // 
+            this.addressConverterToolStripMenuItem.Name = "addressConverterToolStripMenuItem";
+            this.addressConverterToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addressConverterToolStripMenuItem.Text = "Address Converter";
+            this.addressConverterToolStripMenuItem.Click += new System.EventHandler(this.addressConverterToolStripMenuItem_Click);
+            // 
             // romInfoLabel
             // 
             this.romInfoLabel.AutoSize = true;
@@ -70,13 +95,6 @@
             this.romInfoLabel.Size = new System.Drawing.Size(76, 13);
             this.romInfoLabel.TabIndex = 1;
             this.romInfoLabel.Text = "No rom loaded";
-            // 
-            // saveROMToolStripMenuItem
-            // 
-            this.saveROMToolStripMenuItem.Name = "saveROMToolStripMenuItem";
-            this.saveROMToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.saveROMToolStripMenuItem.Text = "Save ROM";
-            this.saveROMToolStripMenuItem.Click += new System.EventHandler(this.saveROMToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -102,6 +120,8 @@
         private System.Windows.Forms.ToolStripMenuItem loadROMToolStripMenuItem;
         private System.Windows.Forms.Label romInfoLabel;
         private System.Windows.Forms.ToolStripMenuItem saveROMToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addressConverterToolStripMenuItem;
     }
 }
 

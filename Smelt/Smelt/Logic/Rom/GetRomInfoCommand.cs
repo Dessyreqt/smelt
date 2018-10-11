@@ -27,8 +27,8 @@
             rom.Header.Title = rom.String(startAddress, 21);
             rom.Header.Makeup = RomMakeup.Parse(rom.Byte(startAddress + 0x15));
             rom.Header.Type = rom.Byte(startAddress + 0x16);
-            rom.Header.RomSize = 0x400 << rom.Byte(startAddress + 0x17);
-            rom.Header.SramSize = 0x400 << rom.Byte(startAddress + 0x18);
+            rom.Header.RomSize = rom.Byte(startAddress + 0x17);
+            rom.Header.SramSize = rom.Byte(startAddress + 0x18);
             rom.Header.CreatorLicenseIdCode = rom.Byte(startAddress + 0x19);
             rom.Header.VersionNum = rom.Byte(startAddress + 0x1B);
             rom.Header.ChecksumComplement = rom.Word(startAddress + 0x1C);
