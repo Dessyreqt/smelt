@@ -1,4 +1,4 @@
-﻿namespace Smelt
+﻿namespace Smelt.Forms
 {
     using System;
     using System.Windows.Forms;
@@ -8,13 +8,14 @@
 
     public partial class MainForm : Form
     {
-        private AppState appState;
+        private readonly AppState appState;
 
         public MainForm()
         {
             InitializeComponent();
 
             appState = new AppState();
+            SetMenuEnabled();
         }
 
         private void loadROMToolStripMenuItem_Click(object sender, EventArgs e)
@@ -27,8 +28,9 @@
 
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                Command.Run(new LoadRomCommand(appState, dialog.FileName));
+                UiCommand.Run(new LoadRomCommand(appState, dialog.FileName));
                 SetRomInfoLabelText();
+                SetMenuEnabled();
             }
         }
 
@@ -68,8 +70,23 @@ Editable: {rom.Editable}";
                     dialog.FileName += ".sfc";
                 }
 
-                Command.Run(new SaveRomCommand(appState, dialog.FileName));
+                UiCommand.Run(new SaveRomCommand(appState, dialog.FileName));
             }
+        }
+
+        private void addressConverterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var addressConverter = new AddressConverter(appState);
+            
+            addressConverter.Show();
+        }
+
+        private void SetMenuEnabled()
+        {
+            var romLoaded = appState.Rom != null;
+
+            saveROMToolStripMenuItem.Enabled = romLoaded;
+            addressConverterToolStripMenuItem.Enabled = romLoaded;
         }
     }
 }
