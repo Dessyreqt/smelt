@@ -118,6 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="label1.Text" xml:space="preserve">
-    <value>Input the address you want to convert in the appropriate format and click convert. If it's a rom address, use the format "$000000". If it's the actual hex address in the rom file, use the format "0x000000".</value>
+    <value>Input the address you want to convert in the appropriate format and click convert. If it's a rom address, use the format "$00:0000" (colon optional). If it's the actual hex address in the rom file, use the format "0x000000".</value>
   </data>
 </root>
