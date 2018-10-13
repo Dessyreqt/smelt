@@ -16,6 +16,7 @@
 
         public void Execute(TestClass testClass)
         {
+            TestRoms.Clear();
             var instance = testClass.Construct();
 
             testClass.RunCases(@case =>
@@ -25,8 +26,6 @@
 
             instance.Dispose();
         }
-
-
     }
 
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]

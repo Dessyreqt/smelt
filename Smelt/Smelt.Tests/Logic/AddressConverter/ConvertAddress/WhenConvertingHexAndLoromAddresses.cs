@@ -1,7 +1,7 @@
 ﻿namespace Smelt.Tests.Logic.AddressConverter.ConvertAddress
 {
-    using Data;
     using Shouldly;
+    using Smelt.Data;
     using Smelt.Logic;
     using Smelt.Logic.AddressConverter;
 

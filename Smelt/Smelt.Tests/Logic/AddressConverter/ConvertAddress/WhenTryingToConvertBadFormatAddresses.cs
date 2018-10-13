@@ -1,8 +1,7 @@
 ﻿namespace Smelt.Tests.Logic.AddressConverter.ConvertAddress
 {
-    using System;
-    using Data;
     using Shouldly;
+    using Smelt.Data;
     using Smelt.Logic;
     using Smelt.Logic.AddressConverter;
 
@@ -19,7 +18,7 @@
 
         public void ShouldThrowException()
         {
-            Should.Throw<Exception>(() => Command.Run(new ConvertAddressCommand(appState)));
+            Should.Throw<ConvertAddressException>(() => Command.Run(new ConvertAddressCommand(appState)));
         }
     }
 }
