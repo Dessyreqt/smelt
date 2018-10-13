@@ -26,7 +26,7 @@
 
             if ((input & 0x20) == 0)
             {
-                throw new Exception("Unrecognized Rom makeup");
+                throw new ArgumentException("Unrecognized Rom makeup", nameof(input));
             }
 
             if ((input & 0x1) == 0x1)
@@ -50,7 +50,7 @@
 
             if (makeup.ExLoRom && makeup.ExHiRom)
             {
-                throw new Exception("Unrecognized Rom makeup");
+                throw new ArgumentException("Unrecognized Rom makeup", nameof(input));
             }
 
             if ((input & 0x10) == 0x10)

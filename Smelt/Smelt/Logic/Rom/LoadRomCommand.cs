@@ -33,13 +33,13 @@
             
             if (fileInfo.Length < 0x8000)
             {
-                throw new Exception("Rom file is too small.");
+                throw new LoadRomException("Rom file is too small.");
             }
 
             // max length 0x1000000, file might include SMC header (length 0x200)
             if (fileInfo.Length > 0x1000200)
             {
-                throw new Exception("Rom file is too large.");
+                throw new LoadRomException("Rom file is too large.");
             }
         }
 
@@ -49,7 +49,7 @@
 
             if (headerSize != 0 && headerSize != 512)
             {
-                throw new Exception("Rom has a malformed SMC header.");
+                throw new LoadRomException("Rom has a malformed SMC header.");
             }
 
             if (headerSize == 512)
@@ -58,6 +58,13 @@
             }
 
             return rawData;
+        }
+    }
+
+    public class LoadRomException : Exception
+    {
+        public LoadRomException(string message) : base(message)
+        {
         }
     }
 }

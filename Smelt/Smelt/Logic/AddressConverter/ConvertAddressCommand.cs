@@ -17,7 +17,7 @@
 
             if (!inputAddress.StartsWith("$") && !inputAddress.StartsWith("0x"))
             {
-                throw new Exception("Input address needs to start with \"$\" or \"0x\"");
+                throw new ConvertAddressException("Input address needs to start with \"$\" or \"0x\"");
             }
 
             var addressString = Regex.Replace(inputAddress, "[^0-9A-Fa-f]", "");
@@ -33,6 +33,13 @@
                 
                 AppState.OutputAddress = $"${AppState.Rom.HexAddressToRomAddress(addressValue)}";
             }
+        }
+    }
+
+    public class ConvertAddressException : Exception
+    {
+        public ConvertAddressException(string message) : base(message)
+        {
         }
     }
 }

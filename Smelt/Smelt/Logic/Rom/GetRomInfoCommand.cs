@@ -18,6 +18,11 @@
             // this doesn't go here, eventually it will be part of an SM specific command
             rom.PlmBank = rom.Byte(0x204AC);
             rom.ScrollPlmBank = rom.Byte(0x20B60);
+
+            if (rom.Region == RomRegion.NTSC && rom.PlmBank == 0x8F && rom.ScrollPlmBank == 0x8F)
+            {
+                rom.Editable = true;
+            }
         }
 
         private void ReadHeader(Rom rom)

@@ -3,7 +3,6 @@
     using System;
     using System.Windows.Forms;
     using Data;
-    using Logic;
     using Logic.Rom;
 
     public partial class MainForm : Form
